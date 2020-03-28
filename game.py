@@ -1,3 +1,4 @@
+
 # print sudoku puzzle nicely in terminal with box outline
 def print_b(bo, size, box):
     for r in range(size):
@@ -60,9 +61,9 @@ def solve_sudoku(bo, size, box):
 
 
 def main():
-    size = 9
-    box = 3
-    matrix = [[int(x) for x in line.strip().split(' ')] for line in open('hard9.txt')]
+    size = 4
+    box = 2
+    matrix = [[int(x) for x in line.strip().split(' ')] for line in open('easy4.txt')]
     print("This is what you start with:")
     print_b(matrix, size, box)
     if solve_sudoku(matrix, size, box):
