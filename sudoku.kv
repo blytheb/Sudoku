@@ -1,0 +1,43 @@
+<MainScreenLayout>:
+    orientation: "vertical"
+    Label:
+        font_size: 48
+        text: 'Weclome To My Sudoku Game'
+        valign: 'bottom'
+    Label:
+        font_size: 20
+        text: 'Select a Sudoku grid size: '
+        valign: 'middle'
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 40
+        padding: 60
+        Button:
+            text: ' 4 x 4 '
+        Button:
+            text: ' 9 x 9 '
+    Label:
+        font_size: 20
+        text: 'Select a dificulty: '
+        valign: 'bottom'
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 20
+        padding: 60
+
+        Button:
+            text: ' EASY '
+        Button:
+            text: ' REGULAR '
+
+        Button:
+            text: ' HARD '
+    FloatLayout:
+        Button:
+            text: ' How To Play '
+            size_hint: .25, .3
+            pos_hint: {"x": .375, "y": .7}
+        Button:
+            text: ' Exit '
+            size_hint: .25 , .3
+            pos_hint: {"x": .375, "y": .3}
