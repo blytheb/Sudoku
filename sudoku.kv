@@ -4,40 +4,45 @@
         font_size: 48
         text: 'Weclome To My Sudoku Game'
         valign: 'bottom'
-    Label:
-        font_size: 20
-        text: 'Select a Sudoku grid size: '
-        valign: 'middle'
-    BoxLayout:
-        orientation: "horizontal"
-        spacing: 40
-        padding: 60
-        Button:
-            text: ' 4 x 4 '
-        Button:
-            text: ' 9 x 9 '
-    Label:
-        font_size: 20
-        text: 'Select a dificulty: '
-        valign: 'bottom'
-    BoxLayout:
-        orientation: "horizontal"
-        spacing: 20
-        padding: 60
+    GridLayout:
+        rows: 4
+        cols: 1
+        packing: 100
+        Label:
+            font_size: 20
+            text: 'Select a Sudoku grid size: '
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+            padding: 40
+            Button:
+                text: ' 4 x 4 '
+            Button:
+                text: ' 9 x 9 '
+        Label:
+            font_size: 20
+            text: 'Select a dificulty: '
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 20
+            padding: 40
 
-        Button:
-            text: ' EASY '
-        Button:
-            text: ' REGULAR '
-
-        Button:
-            text: ' HARD '
+            Button:
+                text: ' EASY '
+            Button:
+                text: ' REGULAR '
+            Button:
+                text: ' HARD '
     FloatLayout:
         Button:
+            text: " Let's Play "
+            size_hint: .25, .2
+            pos_hint: {"x": .375, "y": .8}
+        Button:
             text: ' How To Play '
-            size_hint: .25, .3
-            pos_hint: {"x": .375, "y": .7}
+            size_hint: .25 , .2
+            pos_hint: {"x": .375, "y": .5}
         Button:
             text: ' Exit '
-            size_hint: .25 , .3
-            pos_hint: {"x": .375, "y": .3}
+            size_hint: .25 , .2
+            pos_hint: {"x": .375, "y": .2}
