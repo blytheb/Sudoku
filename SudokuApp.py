@@ -32,11 +32,11 @@ class MainScreenLayout(BoxLayout, ButtonBehavior):
 
     def get_size(self, instance):
         select = instance.text
-        print("GRID SIZE: ", select)
+        # print("GRID SIZE: ", select)
 
     def get_level(self, instance):
         select = instance.text
-        print("LEVEL:", select)
+        # print("LEVEL:", select)
 
 
 
