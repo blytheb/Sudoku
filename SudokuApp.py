@@ -12,9 +12,6 @@ class MainScreenLayout(BoxLayout):
     def clk_setting(self, instance):
         print(instance.text)
 
-        
-
-
 
 class SudokuApp(App):
     def build(self):
