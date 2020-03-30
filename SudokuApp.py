@@ -1,14 +1,13 @@
 from kivy.app import App
-from kivy.lang import Builder
-from kivy.properties import ObjectProperty
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.button import ButtonBehavior
 from kivy.uix.togglebutton import ToggleButtonBehavior
+from kivy.properties import ObjectProperty
+from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
 
 
-class MainScreenLayout(BoxLayout, ButtonBehavior):
+class MainScreen(Screen, BoxLayout, ToggleButtonBehavior):
     def __init__(self, **kwargs):
-        super(MainScreenLayout, self).__init__(**kwargs)
+        super(MainScreen, self).__init__(**kwargs)
 
     allow_no_selection: False
 
@@ -29,7 +28,6 @@ class MainScreenLayout(BoxLayout, ButtonBehavior):
 
         print("GAME MODE: ", status)
 
-
     def get_size(self, instance):
         select = instance.text
         # print("GRID SIZE: ", select)
@@ -39,11 +37,20 @@ class MainScreenLayout(BoxLayout, ButtonBehavior):
         # print("LEVEL:", select)
 
 
+class GameScreen(Screen):
+    pass
+
+class HowToScreen(Screen):
+    pass
+
+class WindowManager(ScreenManager):
+    pass
 
 
 class SudokuApp(App):
     def build(self):
-        return MainScreenLayout()
+        m = WindowManager()
+        return m
 
 
 if __name__ == '__main__':

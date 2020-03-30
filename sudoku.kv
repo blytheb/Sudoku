@@ -1,63 +1,90 @@
-<MainScreenLayout>:
-    orientation: "vertical"
-    Label:
-        font_size: 48
-        text: 'Weclome To My Sudoku Game'
-        valign: 'bottom'
+<WindowManager>:
+    MainScreen:
+    GameScreen:
+    HowToScreen:
 
+<MainScreen@Screen>:
+    name: "main"
     BoxLayout:
-        orientation: "horizontal"
-        spacing: 10
-        padding: 20
+        orientation: "vertical"
+        Label:
+            font_size: 48
+            text: 'Weclome To My Sudoku Game'
+            valign: 'bottom'
 
-        ToggleButton:
-            id: four
-            group: 'size'
-            text: ' 4 x 4 '
-            state: 'down'
-            on_press: root.get_size(self)
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            padding: 20
 
-        ToggleButton:
-            id: nine
-            group: 'size'
-            text: ' 9 x 9 '
-            on_press: root.get_size(self)
+            ToggleButton:
+                id: four
+                group: 'size'
+                text: ' 4 x 4 '
+                state: 'down'
+                on_press: root.get_size(self)
 
-    BoxLayout:
-        orientation: "horizontal"
-        spacing: 10
-        padding: 20
-        ToggleButton:
-            group: 'level'
-            text: ' EASY '
-            state: 'down'
-            on_press: root.get_level(self)
+            ToggleButton:
+                id: nine
+                group: 'size'
+                text: ' 9 x 9 '
+                on_press: root.get_size(self)
 
-        ToggleButton:
-            group: 'level'
-            text: ' REGULAR '
-            on_press: root.get_level(self)
+        BoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            padding: 20
+            ToggleButton:
+                group: 'level'
+                text: ' EASY '
+                state: 'down'
+                on_press: root.get_level(self)
 
-        ToggleButton:
-            group: 'level'
-            text: ' HARD '
-            on_press: root.get_level(self)
+            ToggleButton:
+                group: 'level'
+                text: ' REGULAR '
+                on_press: root.get_level(self)
 
-    FloatLayout:
-        id: setting
-        Button:
-            text: " Let's Play "
-            size_hint: .25, .2
-            pos_hint: {"x": .375, "y": .8}
-            on_press: root.clk_setting(self)
+            ToggleButton:
+                group: 'level'
+                text: ' HARD '
+                on_press: root.get_level(self)
 
-        Button:
-            text: ' How To Play '
-            size_hint: .25 , .2
-            pos_hint: {"x": .375, "y": .5}
-            on_press: root.clk_setting(self)
-        Button:
-            text: ' Exit '
-            size_hint: .25 , .2
-            pos_hint: {"x": .375, "y": .2}
-            on_press: app.stop()
+        FloatLayout:
+            id: setting
+            Button:
+                text: " Let's Play "
+                size_hint: .25, .2
+                pos_hint: {"x": .375, "y": .8}
+                on_release:
+                    root.clk_setting(self)
+                    app.root.current = 'game'
+                    app.root.transition.direction = 'left'
+
+            Button:
+                text: ' How To Play '
+                size_hint: .25 , .2
+                pos_hint: {"x": .375, "y": .5}
+                on_release:
+                    root.clk_setting(self)
+                    app.root.current = 'game'
+                    app.root.transition.direction = 'left'
+
+            Button:
+                text: ' Exit '
+                size_hint: .25 , .2
+                pos_hint: {"x": .375, "y": .2}
+                on_press: app.stop()
+
+
+<GameScreen@Screen>:
+    name: "game"
+    Button:
+        text: "go back"
+        on_release:
+            app.root.current = "main"
+            app.root.transition.direction = 'right'
+
+<HowToScreen@Screen>:
+    name: 'howto'
+    
