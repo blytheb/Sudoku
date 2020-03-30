@@ -4,45 +4,43 @@
         font_size: 48
         text: 'Weclome To My Sudoku Game'
         valign: 'bottom'
-    GridLayout:
-        rows: 4
-        cols: 1
-        packing: 100
-        Label:
-            font_size: 20
-            text: 'Select a Sudoku grid size: '
-        BoxLayout:
-            orientation: "horizontal"
-            spacing: 20
-            padding: 40
-            ToggleButton:
-                id: four
-                group: 'size'
-                text: ' 4 x 4 '
-                state: 'down'
-            ToggleButton:
-                id: nine
-                group: 'size'
-                text: ' 9 x 9 '
-        Label:
-            font_size: 20
-            text: 'Select a dificulty: '
-        BoxLayout:
-            orientation: "horizontal"
-            spacing: 20
-            padding: 40
-            Button:
-                id: easy
-                group: 'level'
-                text: ' EASY '
-            Button:
-                id: regular
-                group: 'level'
-                text: ' REGULAR '
-            Button:
-                id: hard
-                group: 'level'
-                text: ' HARD '
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        padding: 20
+
+        ToggleButton:
+            id: four
+            group: 'size'
+            text: ' 4 x 4 '
+            on_press: root.get_size(self)
+
+        ToggleButton:
+            id: nine
+            group: 'size'
+            text: ' 9 x 9 '
+            on_press: root.get_size(self)
+
+    BoxLayout:
+        orientation: "horizontal"
+        spacing: 10
+        padding: 20
+        ToggleButton:
+            group: 'level'
+            text: ' EASY '
+            on_press: root.get_level(self)
+
+        ToggleButton:
+            group: 'level'
+            text: ' REGULAR '
+            on_press: root.get_level(self)
+
+        ToggleButton:
+            group: 'level'
+            text: ' HARD '
+            on_press: root.get_level(self)
+
     FloatLayout:
         id: setting
         Button:
@@ -60,4 +58,4 @@
             text: ' Exit '
             size_hint: .25 , .2
             pos_hint: {"x": .375, "y": .2}
-            on_press: root.clk_setting(self)
+            on_press: app.stop()
