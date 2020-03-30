@@ -15,9 +15,14 @@
             orientation: "horizontal"
             spacing: 20
             padding: 40
-            Button:
+            ToggleButton:
+                id: four
+                group: 'size'
                 text: ' 4 x 4 '
-            Button:
+                state: 'down'
+            ToggleButton:
+                id: nine
+                group: 'size'
                 text: ' 9 x 9 '
         Label:
             font_size: 20
@@ -26,23 +31,33 @@
             orientation: "horizontal"
             spacing: 20
             padding: 40
-
             Button:
+                id: easy
+                group: 'level'
                 text: ' EASY '
             Button:
+                id: regular
+                group: 'level'
                 text: ' REGULAR '
             Button:
+                id: hard
+                group: 'level'
                 text: ' HARD '
     FloatLayout:
+        id: setting
         Button:
             text: " Let's Play "
             size_hint: .25, .2
             pos_hint: {"x": .375, "y": .8}
+            on_press: root.clk_setting(self)
+
         Button:
             text: ' How To Play '
             size_hint: .25 , .2
             pos_hint: {"x": .375, "y": .5}
+            on_press: root.clk_setting(self)
         Button:
             text: ' Exit '
             size_hint: .25 , .2
             pos_hint: {"x": .375, "y": .2}
+            on_press: root.clk_setting(self)
