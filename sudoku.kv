@@ -22,30 +22,33 @@
                 group: 'size'
                 text: ' 4 x 4 '
                 state: 'down'
-                on_press: root.get_size(self)
+                on_press: root.get_grid(self)
 
             ToggleButton:
                 id: nine
                 group: 'size'
                 text: ' 9 x 9 '
-                on_press: root.get_size(self)
+                on_press: root.get_grid(self)
 
         BoxLayout:
             orientation: "horizontal"
             spacing: 10
             padding: 20
             ToggleButton:
+                id: easy
                 group: 'level'
                 text: ' EASY '
                 state: 'down'
                 on_press: root.get_level(self)
 
             ToggleButton:
+                id: reg
                 group: 'level'
                 text: ' REGULAR '
                 on_press: root.get_level(self)
 
             ToggleButton:
+                id: hard
                 group: 'level'
                 text: ' HARD '
                 on_press: root.get_level(self)
@@ -67,7 +70,7 @@
                 pos_hint: {"x": .375, "y": .5}
                 on_release:
                     root.clk_setting(self)
-                    app.root.current = 'game'
+                    app.root.current = 'howto'
                     app.root.transition.direction = 'left'
 
             Button:
@@ -79,6 +82,12 @@
 
 <GameScreen@Screen>:
     name: "game"
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            font_size: 48
+            text: 'Sudoku '
+            valign: 'bottom'
     Button:
         text: "go back"
         on_release:
@@ -87,4 +96,8 @@
 
 <HowToScreen@Screen>:
     name: 'howto'
-    
+    Button:
+        text: "go back"
+        on_release:
+            app.root.current = "main"
+            app.root.transition.direction = 'right'
