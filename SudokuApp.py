@@ -1,8 +1,8 @@
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.togglebutton import ToggleButtonBehavior
-from kivy.properties import StringProperty
-from kivy.uix.screenmanager import ScreenManager, Screen, NoTransition
+from kivy.properties import StringProperty, NumericProperty
+from kivy.uix.screenmanager import ScreenManager, Screen
 
 
 class MainScreen(Screen, BoxLayout, ToggleButtonBehavior):
@@ -11,29 +11,12 @@ class MainScreen(Screen, BoxLayout, ToggleButtonBehavior):
 
     allow_no_selection: False
 
-    def getInfo(self):
-        for w in ToggleButtonBehavior.get_widgets('size'):
-            if w.state == 'down':
-                self.manager.grid = w.text
-        for w in ToggleButtonBehavior.get_widgets('level'):
-            if w.state == 'down':
-                self.manager.level = w.text
-
     def clk_setting(self, instance):
         status = instance.text
         if status == " Let's Play ":
-            self.getInfo()
-            print("PLAY :", self.manager.grid, "AT LEVEL ", self.manager.level)
+            print("PLAY :", self.manager.grid_size, "AT LEVEL ", self.manager.level)
 
         print("GAME MODE: ", status)
-
-    def get_grid(self, instance):
-        self.manager.grid = instance.text
-        # print("GRID SIZE: ", select)
-
-    def get_level(self, instance):
-        self.manager.level = instance.text
-        # print("LEVEL:", select)
 
 
 class GameScreen(Screen, BoxLayout):
@@ -45,8 +28,8 @@ class HowToScreen(Screen):
 
 
 class WindowManager(ScreenManager):
-    grid = StringProperty(' 4 x 4 ')
-    level = StringProperty(' EASY ')
+    grid_size = NumericProperty(4)
+    level = StringProperty('easy')
 
 
 class SudokuApp(App):

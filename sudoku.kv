@@ -22,13 +22,13 @@
                 group: 'size'
                 text: ' 4 x 4 '
                 state: 'down'
-                on_press: root.get_grid(self)
+                on_press: root.manager.grid_size = 4
 
             ToggleButton:
                 id: nine
                 group: 'size'
                 text: ' 9 x 9 '
-                on_press: root.get_grid(self)
+                on_press: root.manager.grid_size = 9
 
         BoxLayout:
             orientation: "horizontal"
@@ -39,19 +39,19 @@
                 group: 'level'
                 text: ' EASY '
                 state: 'down'
-                on_press: root.get_level(self)
+                on_press: root.manager.level = 'easy'
 
             ToggleButton:
                 id: reg
                 group: 'level'
                 text: ' REGULAR '
-                on_press: root.get_level(self)
+                on_press: root.manager.level = 'regular'
 
             ToggleButton:
                 id: hard
                 group: 'level'
                 text: ' HARD '
-                on_press: root.get_level(self)
+                on_press: root.manager.level = 'hard'
 
         FloatLayout:
             id: setting
@@ -86,13 +86,13 @@
         orientation: 'vertical'
         Label:
             font_size: 48
-            text: 'Sudoku '
+            text: 'Sudoku ' + root.manager.level + str(root.manager.grid_size)
             valign: 'bottom'
-    Button:
-        text: "go back"
-        on_release:
-            app.root.current = "main"
-            app.root.transition.direction = 'right'
+        Button:
+            text: "go back"
+            on_release:
+                app.root.current = "main"
+                app.root.transition.direction = 'right'
 
 <HowToScreen@Screen>:
     name: 'howto'
