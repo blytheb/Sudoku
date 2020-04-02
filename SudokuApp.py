@@ -6,6 +6,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.properties import Clock
+from kivy.uix.widget import Widget
 
 
 class MainScreen(Screen, BoxLayout, ToggleButtonBehavior):
@@ -23,28 +24,16 @@ class MainScreen(Screen, BoxLayout, ToggleButtonBehavior):
 
 
 class GameScreen(Screen, BoxLayout):
-    def __init__(self, **kwargs):
-        super(GameScreen, self).__init__(**kwargs)
-
+#     def __init__(self, **kwargs):
+#       super(GameScreen, self).__init__(**kwargs)
 
     def drawGrid(self):
         for i in range(self.manager.grid_size * self.manager.grid_size):
-            self.ids.board.add_widget(TextInput(text='h', multiline=False))
-        print(self.ids.board.children)
+            if self.manager.grid_size == 9:
+                self.ids.board.add_widget(TextInput(text="", multiline=False, cursor_blink=False, size_hint_x=None, size_hint_y=None, height=45, width=45))
+            if self.manager.grid_size == 4:
+                self.ids.board.add_widget(TextInput(text="", multiline=False, cursor_blink=False, size_hint_x=None, size_hint_y=None, height=65, width=65))
 
-class GridTwo(GridLayout):
-    def __init__(self, **kwargs):
-        super(GridTwo, self).__init__(**kwargs)
-
-        self.rows = 2
-        self.cols = 2
-
-        for i in range(self.rows * self.cols):
-            self.add_widget(TextInput(text='h', multiline=False))
-
-
-class GridThree(GridLayout):
-    pass
 
 
 class HowToScreen(Screen):
